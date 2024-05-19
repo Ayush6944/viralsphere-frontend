@@ -1,3 +1,9 @@
+/* src/index.css */
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+
 body {
   margin: 0;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -10,4 +16,33 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+.tilt{
+  transition: all 0.1s ease;
+  cursor:pointer;
+  height: 50%;
+  margin-bottom:15rem;
+}
+.tilt_content{
+  width: 300px;
+}
+img{
+  width: 100%;
+
+}
+.body1{
+  height: 110vh;
+  display: grid;
+  place-items: center;
+  background-color: rgb(106, 249, 249);
+  box-sizing: border-box;
+}
+.card{
+  width: 80%;
+  height: 80%;
+  border-radius: 10px;
+  background-color: #fff;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  display: grid;
+  place-items: center;
 }
