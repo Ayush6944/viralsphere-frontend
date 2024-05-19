@@ -55,7 +55,7 @@ const SignupForm = () => {
       formDataToSend.append('coverPhoto', formData.coverPhoto);
       formDataToSend.append('gender', formData.gender);
 
-      const response = await axios.post('http://localhost:5000/signup', formDataToSend);
+      const response = await axios.post(`${window.location.origin}/signup`, formDataToSend);
       console.log('User created:', response.data);
       // setLogin(true)
       alert('User created successfully')

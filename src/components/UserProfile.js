@@ -14,7 +14,7 @@ const UserProfile = () => {
 
   useEffect(() => {
     if (phoneNumber) {
-      axios.get(`http://localhost:5000/users/${phoneNumber}`)
+      axios.get(`${window.location.origin}/users/${phoneNumber}`)
         .then(response => setUser(response.data))
         .catch(error => console.error(error));
     }
