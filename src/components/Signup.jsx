@@ -11,12 +11,10 @@ import { GoogleAuthProvider, signInWithEmailAndPassword, signInWithPopup } from 
 const SignupForm = () => {
   const [formData, setFormData] = useState({
     name: '',
+    phone:'',
     email: '',
-    profilePhoto: null,
-    coverPhoto: null,
     gender: '',
     password: '',
-    phone:'',
   });
 
   const handleGoogle = () => {
@@ -47,19 +45,18 @@ const SignupForm = () => {
       if(formData.password.length >= 6){
       createUserWithEmailAndPassword(database,formData.email,formData.password)
       
+      
       const formDataToSend = new FormData();
       formDataToSend.append('name', formData.name);
-      formDataToSend.append('email', formData.email);
       formDataToSend.append('phone', formData.phone);
-      formDataToSend.append('profilePhoto', formData.profilePhoto);
-      formDataToSend.append('coverPhoto', formData.coverPhoto);
-      formDataToSend.append('gender', formData.gender);
+      formDataToSend.append('email', formData.email);
 
-      const response = await axios.post(`${window.location.origin}/signup`, formDataToSend);
+      const response = await axios.post(`https://viralapp-2.onrender.com/signup`, formDataToSend);
       console.log('User created:', response.data);
       // setLogin(true)
-      alert('User created successfully')
-      history('/home')}
+      history('/home')
+      alert('User created successfully.')
+      }
       else{
         alert('Password should be at least 6 characters')
       }
@@ -88,20 +85,20 @@ const SignupForm = () => {
       <input required className='border  w-full rounded-2xl h-10 mb-3 p-2 border-black' type="text" name="name"  onChange={handleChange} />
 {/* email */}
       <label  className='mb-2 text-gray-700'>Email</label>
-      <input required className=' w-full rounded-2xl h-10 mb-3 p-2 border border-black' type="emaail" name="email"  onChange={handleChange} />
+      <input required className=' w-full  rounded-2xl h-10 mb-3 p-2 border border-black' type="emaail" name="email"  onChange={handleChange} />
 
 {/* password */}
       <label  className='mb-2 text-gray-700'>Password</label>
-      <input required type="password" className=' w-full rounded-2xl h-10 mb-3 p border border-black' name="password"  onChange={handleChange} />
-{/* password */}
+      <input required type="password" className=' w-full  rounded-2xl h-10 mb-3 p border border-black' name="password"  onChange={handleChange} />
+{/* phone */}
       <label  className='mb-2 text-gray-700'>Phone</label>
-      <input required type="tel" className=' w-full rounded-2xl h-10 mb-3 p border border-black' name="phone"  onChange={handleChange} />
+      <input required type="tel" className=' w-full  rounded-2xl h-10 mb-3 p border border-black' name="phone"  onChange={handleChange} />
 {/* photo */}
       <label  className='mb-2 text-gray-700'>Profile Photo</label>
-      <input required type="file" className=' w-full  mb-3 p-2 rounded-2xl border border-black' name="profilePhoto" onChange={handleFileChange} />
+      <input type="file" className=' w-full  mb-3 p-2 rounded-2xl border border-black' name="profilePhoto" />
 
       <label  className='mb-2 text-gray-700'>Cover Photo</label>
-      <input required type="file" className='w-full  mb-3 p-2 rounded-2xl border border-black' name="coverPhoto" onChange={handleFileChange} />
+      <input  type="file" className='w-full  mb-3 p-2 rounded-2xl border border-black' name="coverPhoto" />
 
       <label  className='mb-2 text-gray-700'>Gender.</label>
       <select required name="gender" className='w-1/2 h-8  rounded-2xl mb-5 border border-black' onChange={handleChange}>
@@ -113,7 +110,9 @@ const SignupForm = () => {
  
 
       
-      <button type="submit" className=' m-auto border border-black p-3 px-4 rounded-xl bg-blue-500 text-white hover:bg-blue-200 hover:text-black'>Submit</button></div>
+      <button type="submit" className=' m-auto border border-black p-3 px-4 rounded-xl bg-blue-500 text-white hover:bg-blue-200 hover:text-black'>
+        <a href='/home'>Submit</a>
+        </button></div>
      <a href="/login"><h2  className='text-center mt-2 uppercase font-serif text-gray-700 hover:text-blue-800'>already have account go to <span className='text-blue-800 underline'>LogIn</span> </h2></a>
      </form>
    

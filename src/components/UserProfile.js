@@ -5,7 +5,7 @@ import { useNavigate } from 'react-router-dom';
 
 const UserProfile = () => {
   const [user, setUser] = useState(null);
-  const [phoneNumber, setPhoneNumber] = useState('');
+  const [phoneNumber, setPhoneNumber] = useState('1234');
   const navigate = useNavigate();
 
   const handlePhoneNumberChange = (e) => {
@@ -14,7 +14,7 @@ const UserProfile = () => {
 
   useEffect(() => {
     if (phoneNumber) {
-      axios.get(`${window.location.origin}/users/${phoneNumber}`)
+      axios.get(`https://viralapp-2.onrender.com/users/${phoneNumber}`)
         .then(response => setUser(response.data))
         .catch(error => console.error(error));
     }
@@ -62,7 +62,10 @@ const UserProfile = () => {
             size={200}
             value={JSON.stringify(user)} />
           </div>
-        </div></div>
+
+        </div>
+        <h3 className='text-center'> You can try : 123, 0000, 99999, 6659659 already saved in database</h3>
+        </div>
       ) : (
         <div>Please Enter Correct no / User NOT found ... </div>
       )}
